@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
       
       //extracting url - seems to be correct
       var url = tab.url;
-      alert(url);
       var source = url.split(".com")[0];
       source = source.split(".");
       source = source[source.length - 1];
@@ -32,16 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
         "bostonherald": "right", "bostonglobe": "left"
       };
 
-      var f = d.createElement('form');
-      f.action = 'http://gtmetrix.com/analyze.html?bm';
-      f.method = 'post';
-      var i = d.createElement('input');
-      i.type = 'hidden';
-      i.name = 'url';
-      i.value = tab.url;
-      f.appendChild(i);
-      d.body.appendChild(f);
-      f.submit();
+      var lean = sourceDict[source];
+      alert(lean)
+
+      //SEEMS UNECESSARY FOR US 
+      // var f = d.createElement('form');
+      // f.action = 'http://gtmetrix.com/analyze.html?bm';
+      // f.method = 'post';
+      // var i = d.createElement('input');
+      // i.type = 'hidden';
+      // i.name = 'url';
+      // i.value = tab.url;
+      // f.appendChild(i);
+      // d.body.appendChild(f);
+      // f.submit();
     });
   }, false);
 }, false);
