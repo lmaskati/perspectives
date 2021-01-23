@@ -2,9 +2,19 @@ document.addEventListener('DOMContentLoaded', function() {
   
     chrome.tabs.getSelected(null, function(tab) {
       d = document;
+
+
+	//left custom search engine
+	var left = "b2429b4ec66f52cb6";
+	//right custom search engine
+	var right = "b2429b4ec66f52cb6";
+	//center custome search engine 
+	var center = "b2429b4ec66f52cb6";
       
       //extracting url - seems to be correct
       var url = tab.url;
+	// extract title
+	var title = tab.title; 
       var source = url.split(".com")[0];
       source = source.split(".");
       source = source[source.length - 1];
@@ -27,31 +37,38 @@ document.addEventListener('DOMContentLoaded', function() {
         "slate": "Left", "theatlantic": "Left", "wsj": "Center",
         "bostonherald": "Right", "bostonglobe": "Left", "vox": "Left"
       };
-
-      var reliabilityDict = {
-        "cnn": "Fair", "nytimes": "Most", "huffpost": "Somewhat",
-        "foxnews": "Somewhat", "usatoday": "Most", "reuters": "Most",
-        "politico": "Most", "yahoo": "Most", "npr": "Most",
-        "latimes": "Most", "breitbart": "Somewhat", "nypost": "Somewhat",
-        "abcnews": "Most", "nbcnews": "Most", "cbsnews": "Most", 
-        "newsweek": "Somewhat", "cbslocal": "Most", "chicagotribune": "Most", 
-        "nydailynews": "Fair", "seattletimes": "Most", 
-        "mercurynews": "Fair", "washingtontimes": "Somewhat", "miamiherald": "Most",
-        "forbes": "Fair", "theguardian": "Fair",
-        "bloomberg": "Most", "bbc": "Most", "buzzfeed": "Fair",
-        "slate": "Somewhat", "theatlantic": "Fair", "wsj": "Most",
-        "bostonherald": "Fair", "bostonglobe": "Fair", "vox": "Fair"
-      };
-
       var lean = leanDict[source];
-      var reliability = reliabilityDict[source];
+//      var reliability = reliabilityDict[source];
 	
 	var capSource = source.charAt(0).toUpperCase() + source.slice(1)
 document.getElementById("source").innerHTML = "News source: " + capSource;
 document.getElementById("res").innerHTML = "Political leaning: " + lean;
-document.getElementById("reliability").innerHTML = "Reliability: " + reliability;
 
-      //SEEMS UNECESSARY FOR US 
+var key = "AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE";
+var centralQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + center;
+var leftQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + left;
+var rightQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + right;
+
+fetch(leftQuery)
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
+//SEEMS UNECESSARY FOR US 
       // var f = d.createElement('form');
       // f.action = 'http://gtmetrix.com/analyze.html?bm';
       // f.method = 'post';
