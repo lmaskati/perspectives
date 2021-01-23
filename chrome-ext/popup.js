@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       //making news-source dict (maybe don't do this all in one file lol idk)
       //mostly obtained from: https://www.allsides.com/media-bias/media-bias-ratings
-      var sourceDict = {
+      var leanDict = {
         "cnn": "Left", "nytimes": "Left", "huffpost": "Left",
         "foxnews": "Right", "usatoday": "Center", "reuters": "Center",
         "politico": "Left", "yahoo": "Left", "npr": "Center",
@@ -25,14 +25,33 @@ document.addEventListener('DOMContentLoaded', function() {
         "forbes": "Center", "theguardian": "Left",
         "bloomberg": "Left", "bbc": "Center", "buzzfeed": "Left",
         "slate": "Left", "theatlantic": "Left", "wsj": "Center",
-        "bostonherald": "Right", "bostonglobe": "Left"
+        "bostonherald": "Right", "bostonglobe": "Left", "vox": "Left"
       };
 
-      var lean = sourceDict[source];
+      var lean = leanDict[source];
+
+      var reliabilityDict = {
+        "cnn": "Fair", "nytimes": "Most", "huffpost": "Somewhat",
+        "foxnews": "Somewhat", "usatoday": "Most", "reuters": "Most",
+        "politico": "Most", "yahoo": "HELPP", "npr": "Most",
+        "latimes": "Most", "breitbart": "Somewhat", "nypost": "HELP",
+        "abcnews": "Most", "nbcnews": "Most", "cbsnews": "Most", 
+        "newsweek": "Somewhat", "cbslocal": "Most", "chicagotribune": "Most", 
+        "nydailynews": "Fair", "seattletimes": "HELP", 
+        "mercurynews": "Fair", "washingtontimes": "Somewhat", "miamiherald": "HELPP",
+        "forbes": "Fair", "theguardian": "Fair",
+        "bloomberg": "Most", "bbc": "Most", "buzzfeed": "Fair",
+        "slate": "Somewhat", "theatlantic": "Fair", "wsj": "Most",
+        "bostonherald": "Fair", "bostonglobe": "Fair", "vox": "Fair"
+      };
+
+      var lean = leanDict[source];
+      var reliability = reliabilityDict[source];
 	
 	var capSource = source.charAt(0).toUpperCase() + source.slice(1)
 document.getElementById("source").innerHTML = "News source: " + capSource;
 document.getElementById("res").innerHTML = "Political leaning: " + lean;
+document.getElementById("reliability").innerHTML = "Reliability: " + reliability;
 
       //SEEMS UNECESSARY FOR US 
       // var f = d.createElement('form');
