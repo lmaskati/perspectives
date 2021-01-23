@@ -5,9 +5,32 @@ document.addEventListener('DOMContentLoaded', function() {
     chrome.tabs.getSelected(null, function(tab) {
       d = document;
       
+      //extracting url - seems to be correct
       var url = tab.url;
-      console.log(url)
       alert(url);
+      var source = url.split(".com")[0];
+      source = source.split(".");
+      source = source[source.length - 1];
+      alert(source)
+
+      //need to get just the source from the url
+
+      //making news-source dict (maybe don't do this all in one file lol idk)
+      //mostly obtained from: https://www.allsides.com/media-bias/media-bias-ratings
+      var sourceDict = {
+        "cnn": "left", "nytimes": "left", "huffpost": "left",
+        "foxnews": "right", "usatoday": "center", "reuters": "center",
+        "politico": "left", "yahoo": "left", "npr": "center",
+        "latimes": "left", "breitbart": "right", "nypost": "right",
+        "abcnews": "left", "nbcnews": "left", "cbsnews": "left", 
+        "newsweek": "center", "cbslocal": "left", "chicagotribune": "left", 
+        "nydailynews": "left", "seattletimes": "center", 
+        "mercurynews": "left", "washingtontimes": "right", "miamiherald": "left",
+        "forbes": "center", "theguardian": "left",
+        "bloomberg": "left", "bbc": "center", "buzzfeed": "left",
+        "slate": "left", "theatlantic": "left", "wsj": "center",
+        "bostonherald": "right", "bostonglobe": "left"
+      };
 
       var f = d.createElement('form');
       f.action = 'http://gtmetrix.com/analyze.html?bm';
