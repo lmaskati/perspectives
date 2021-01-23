@@ -14,23 +14,25 @@ document.addEventListener('DOMContentLoaded', function() {
       //making news-source dict (maybe don't do this all in one file lol idk)
       //mostly obtained from: https://www.allsides.com/media-bias/media-bias-ratings
       var sourceDict = {
-        "cnn": "left", "nytimes": "left", "huffpost": "left",
-        "foxnews": "right", "usatoday": "center", "reuters": "center",
-        "politico": "left", "yahoo": "left", "npr": "center",
-        "latimes": "left", "breitbart": "right", "nypost": "right",
-        "abcnews": "left", "nbcnews": "left", "cbsnews": "left", 
-        "newsweek": "center", "cbslocal": "left", "chicagotribune": "left", 
-        "nydailynews": "left", "seattletimes": "center", 
-        "mercurynews": "left", "washingtontimes": "right", "miamiherald": "left",
-        "forbes": "center", "theguardian": "left",
-        "bloomberg": "left", "bbc": "center", "buzzfeed": "left",
-        "slate": "left", "theatlantic": "left", "wsj": "center",
-        "bostonherald": "right", "bostonglobe": "left"
+        "cnn": "Left", "nytimes": "Left", "huffpost": "Left",
+        "foxnews": "Right", "usatoday": "Center", "reuters": "Center",
+        "politico": "Left", "yahoo": "Left", "npr": "Center",
+        "latimes": "Left", "breitbart": "Right", "nypost": "Right",
+        "abcnews": "Left", "nbcnews": "Left", "cbsnews": "Left", 
+        "newsweek": "Center", "cbslocal": "Left", "chicagotribune": "Left", 
+        "nydailynews": "Left", "seattletimes": "Center", 
+        "mercurynews": "Left", "washingtontimes": "Right", "miamiherald": "Left",
+        "forbes": "Center", "theguardian": "Left",
+        "bloomberg": "Left", "bbc": "Center", "buzzfeed": "Left",
+        "slate": "Left", "theatlantic": "Left", "wsj": "Center",
+        "bostonherald": "Right", "bostonglobe": "Left"
       };
 
       var lean = sourceDict[source];
-document.getElementById("source").innerHTML = source;
-document.getElementById("res").innerHTML = lean;
+	
+	var capSource = source.charAt(0).toUpperCase() + source.slice(1)
+document.getElementById("source").innerHTML = "News source: " + capSource;
+document.getElementById("res").innerHTML = "Political leaning: " + lean;
 
       //SEEMS UNECESSARY FOR US 
       // var f = d.createElement('form');
