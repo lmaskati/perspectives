@@ -28,17 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
         "bostonherald": "Right", "bostonglobe": "Left", "vox": "Left"
       };
 
-      var lean = leanDict[source];
-
       var reliabilityDict = {
         "cnn": "Fair", "nytimes": "Most", "huffpost": "Somewhat",
         "foxnews": "Somewhat", "usatoday": "Most", "reuters": "Most",
-        "politico": "Most", "yahoo": "HELPP", "npr": "Most",
-        "latimes": "Most", "breitbart": "Somewhat", "nypost": "HELP",
+        "politico": "Most", "yahoo": "Most", "npr": "Most",
+        "latimes": "Most", "breitbart": "Somewhat", "nypost": "Somewhat",
         "abcnews": "Most", "nbcnews": "Most", "cbsnews": "Most", 
         "newsweek": "Somewhat", "cbslocal": "Most", "chicagotribune": "Most", 
-        "nydailynews": "Fair", "seattletimes": "HELP", 
-        "mercurynews": "Fair", "washingtontimes": "Somewhat", "miamiherald": "HELPP",
+        "nydailynews": "Fair", "seattletimes": "Most", 
+        "mercurynews": "Fair", "washingtontimes": "Somewhat", "miamiherald": "Most",
         "forbes": "Fair", "theguardian": "Fair",
         "bloomberg": "Most", "bbc": "Most", "buzzfeed": "Fair",
         "slate": "Somewhat", "theatlantic": "Fair", "wsj": "Most",
