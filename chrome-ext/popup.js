@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
       var source = url.split(".com")[0];
       source = source.split(".");
       source = source[source.length - 1];
-      alert(source)
 
       //need to get just the source from the url
 
@@ -32,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       var lean = sourceDict[source];
-      alert(lean)
+document.getElementById("source").innerHTML = source;
+document.getElementById("res").innerHTML = lean;
 
       //SEEMS UNECESSARY FOR US 
       // var f = d.createElement('form');
