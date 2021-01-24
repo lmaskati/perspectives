@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	//left custom search engine
 	var left = "b2429b4ec66f52cb6";
 	//right custom search engine
-	var right = "b2429b4ec66f52cb6";
+	var right = "ca0b35f95481b7956";
 	//center custome search engine 
-	var center = "b2429b4ec66f52cb6";
+	var center = "792b3c9d19def1928";
       
       //extracting url - seems to be correct
       var url = tab.url;
@@ -44,8 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById("source").innerHTML = "News source: " + capSource;
 document.getElementById("res").innerHTML = "Political leaning: " + lean;
 
-var key = "AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE";
-var centralQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + center;
+//var key = "AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE";
+
+var key = "AIzaSyDjprmwWR7113ZjAvos5XIsKmSC6h9OxhE";
+var centerQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + center;
 var leftQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + left;
 var rightQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + right;
 
@@ -63,9 +65,47 @@ fetch(leftQuery)
       response.json().then(function(data) {
         console.log(data);
 
-	// if center or right...do smth 
+	// if center or right...do smth
+
+	if ((lean == "Center") || (lean == "Right")) { 
 	document.getElementById("img1").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
 	document.getElementById("head1").innerHTML = data.items[0].title;
+	document.getElementById("top1").innerHTML = "Left";
+}
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
+fetch(centerQuery)
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+
+	// if center or right...do smth
+
+	if (lean == "Left") { 
+	document.getElementById("img1").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
+	document.getElementById("head1").innerHTML = data.items[0].title;
+	document.getElementById("top1").innerHTML = "Center";
+}
+
+	else if (lean == "Right") {
+	document.getElementById("img2").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
+	document.getElementById("head2").innerHTML = data.items[0].title;
+	document.getElementById("top2").innerHTML = "Center";
+}
+
 
       });
     }
@@ -73,6 +113,35 @@ fetch(leftQuery)
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
+
+
+fetch(rightQuery)
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+
+	// if center or right...do smth
+
+	if ((lean == "Center") || (lean == "Left")) { 
+	document.getElementById("img2").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
+	document.getElementById("head2").innerHTML = data.items[0].title;
+	document.getElementById("top2").innerHTML = "Right";
+}
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
 
 //SEEMS UNECESSARY FOR US 
       // var f = d.createElement('form');
