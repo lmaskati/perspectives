@@ -41,16 +41,23 @@ document.addEventListener('DOMContentLoaded', function() {
 //      var reliability = reliabilityDict[source];
 	
 	var capSource = source.charAt(0).toUpperCase() + source.slice(1)
-document.getElementById("source").innerHTML = "News source: " + capSource;
-document.getElementById("res").innerHTML = "Political leaning: " + lean;
+
+var temp = document.getElementById("source");
+
+temp.innerHTML = "<b>News source: </b> " + capSource;
+temp.setAttribute("href", "https://www.w3schools.com");
+temp.setAttribute("target", "_blank");
+document.getElementById("res").innerHTML = "<b>Political leaning:</b> " + lean;
 
 //var key = "AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE";
 
-var key = "AIzaSyDjprmwWR7113ZjAvos5XIsKmSC6h9OxhE";
 var centerQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + center;
 var leftQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + left;
 var rightQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + right;
 
+if ((lean == "Left") || (lean == "Center") || (lean == "Right")) {
+	document.getElementById("why").innerHTML = "<i>It's important to recognize biases around you. Here are some articles from news sites with different political viewpoints: </i>";
+}
 
 fetch(leftQuery)
   .then(
