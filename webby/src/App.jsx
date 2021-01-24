@@ -13,6 +13,9 @@ class App extends React.Component {
 
   render() {
     return (
+      <div style={{ 
+        backgroundImage: `url("https://media.socastsrm.com/wordpress/wp-content/blogs.dir/2165/files/2020/12/news-1.jpg")` 
+      }}> 
       <Container className="w-100 h-100 p-5">
         <Row>
           <Col>
@@ -32,6 +35,7 @@ class App extends React.Component {
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

@@ -7,15 +7,16 @@ class Reps extends React.Component {
     super(props);
 
     this.state = {
-      data: ' ',
-      url: ' ',
-      imgUrl: ' ',
-      title: ' ',
+      data: '',
+      url: '',
+      imgUrl: '',
+      title: '',
       query: this.props.query,
+      indic: true
     };
   }
   componentWillReceiveProps() {
-    const key = 'AIzaSyDT5bQz1R6Sw9yTToQ5T5og9YkhYFT2oIs'
+    const key = 'AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE'
     console.log('url next');
     console.log(
       `https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=${key}&tbm=nws&cx=ca0b35f95481b7956`
@@ -27,29 +28,30 @@ class Reps extends React.Component {
         data: res.items[0].snippet,
         url: res.items[0].formattedUrl,
         title: res.items[0].title,
-        imgUrl: res.items[0].pagemap.cse_thumbnail[0].src
+        imgUrl: res.items[0].pagemap.cse_thumbnail[0].src,
+        indic: false
       })
     );
   }
 
   render() {
-    const { data, url, title,imgUrl } = this.state;
+    let { data, url, title,imgUrl, indic } = this.state;
     return (
       <div className="d-flex flex-row text-wrap">
         <p className="text-wrap">
-          Conservative article title:
-          <a href={url}>{title}</a>;
+          <b>{indic || 'Conservative article title: '}</b>
+          <a href={url}> {title}</a>
           <br></br>
+          <br></br>
+
           <img 
           src={imgUrl}
-          alt="photo"
           />
           <br></br>
           <br></br>
-          Conservative article snippet: {data}
+          <b>{indic ||'Conservative article snippet: '}</b> {data}
           <br></br>
           <br></br>
-          URL: {url}
 
         </p>
       </div>
