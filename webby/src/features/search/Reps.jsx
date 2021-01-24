@@ -23,7 +23,6 @@ class Reps extends React.Component {
   const {data} = this.state;
    return(
     <div className="d-flex flex-row">
-    {console.log(data)}
     <p>
     My Time Zone is: {data.time_zone || data}
     </p>

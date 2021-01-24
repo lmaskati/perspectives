@@ -5,7 +5,7 @@ import Reps from './features/search/Reps';
 import Libs from './features/search/Libs';
 
 class App extends React.Component {
-  state = { message: "" }
+  state = { message: "coronavirus" }
   callbackFunction = (childData) => {
     this.setState({message: childData})
 }

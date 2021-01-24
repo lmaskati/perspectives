@@ -6,25 +6,40 @@ import {get} from '../../utils/GetArticle'
 class Libs extends React.Component {
     constructor(props) {
       super(props);
-      // '(data|| {'items': [{'snippet':'hi'},{'snippet': '33'}]}).items[1].snippet || data'
    
       this.state = {
-        data: 'hii',
+        data: ' ',
+        url: ' ',
+        title: ' ',
+        query: this.props.query
       };
     }
-  componentDidMount() {
-    get(`https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE&tbm=nws&cx=b2429b4ec66f52cb6`)
-    .then(res => this.setState({ data: res }));
+    componentWillReceiveProps() {
+    console.log('url next')
+    console.log(`https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyCTWna4c9sM7nDNFqw8O71FymNyM27AG4A&tbm=nws&cx=b2429b4ec66f52cb6`)
+    get(`https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyCTWna4c9sM7nDNFqw8O71FymNyM27AG4A&tbm=nws&cx=b2429b4ec66f52cb6`)
+    .then(res => this.setState({ 
+      data: res.items[0].snippet,
+       url:res.items[0].formattedUrl,
+       title:res.items[0].title,
+        }));
   }
 
  render  () {
-  const {data} = this.state;
+  const {data, url,title} = this.state;
    return(
     <div className="d-flex flex-row text-wrap">
-    {console.log(data)}
+
     <p className="text-wrap">
-    Searching for: {this.props.query}
-    {console.log(data)}
+    Liberal article title: {title}
+    <br></br>
+    <br></br>
+    Liberal article snippet: {data}
+    <br></br>
+    <br></br>
+
+    URL: {url}
+
     </p>
     </div>
    )
