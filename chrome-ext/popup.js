@@ -63,6 +63,7 @@ if ((lean == "Left") || (lean == "Center") || (lean == "Right")) {
 	document.getElementById("why").innerHTML = "<i>It's important to recognize biases around you. Here are some articles from news sites with different political viewpoints: </i>";
 }
 
+if ((lean == "Center") || (lean == "Right")) {
 fetch(leftQuery)
   .then(
     function(response) {
@@ -93,6 +94,9 @@ fetch(leftQuery)
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
+}
+
+if ((lean == "Left") || (lean == "Right")) {
 
 fetch(centerQuery)
   .then(
@@ -136,7 +140,9 @@ fetch(centerQuery)
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
+}
 
+if ((lean == "Center") || (lean == "Left")) {
 
 fetch(rightQuery)
   .then(
@@ -168,8 +174,7 @@ fetch(rightQuery)
     console.log('Fetch Error :-S', err);
   });
 
-
-//SEEMS UNECESSARY FOR US 
+}
       // var f = d.createElement('form');
       // f.action = 'http://gtmetrix.com/analyze.html?bm';
       // f.method = 'post';
