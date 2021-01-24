@@ -111,7 +111,7 @@ fetch(centerQuery)
 
 	if (lean == "Left") { 
 	document.getElementById("img1").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
-	var title = document.getElementById("head1").
+	var title = document.getElementById("head1");
 
 	title.innerHTML = data.items[0].title;
 	title.setAttribute("href", data.items[0].link);
