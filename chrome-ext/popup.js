@@ -49,6 +49,7 @@ var centralQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&k
 var leftQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + left;
 var rightQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + right;
 
+
 fetch(leftQuery)
   .then(
     function(response) {
@@ -61,6 +62,9 @@ fetch(leftQuery)
       // Examine the text in the response
       response.json().then(function(data) {
         console.log(data);
+
+	// if center or right...do smth 
+
       });
     }
   )

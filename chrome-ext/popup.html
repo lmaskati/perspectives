@@ -7,7 +7,25 @@
 <style>
 
 body {min-height:300px;min-width:300px}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+//  background-color: #2196F3;
+//  padding: 10px;
+grid-gap: 10px;
+}
 
+.grid {
+height: 100px;
+background-size: cover;
+background-image: url("icon.jpg");
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
 </style>
 
   </head>
@@ -19,5 +37,22 @@ body {min-height:300px;min-width:300px}
 </div>
 
 
+<div class="grid-container">
+<span>hello</span>
+<span>hello</span>
+</div>
+
+<div class="grid-container">
+  <div class="grid">
+</div>
+  <div class="grid">
+</div>
+
+</div>
+
+<div class="grid-container">
+<span>header 1</span>
+<span>header 2</span>
+</div>
   </body>
 </html>
