@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from '../../utils/GetArticle';
 
-class Libs extends React.Component {
+class Central extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,10 +16,10 @@ class Libs extends React.Component {
   componentWillReceiveProps() {
     console.log('url next');
     console.log(
-      `https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyCTWna4c9sM7nDNFqw8O71FymNyM27AG4A&tbm=nws&cx=b2429b4ec66f52cb6`
+      `https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyCTWna4c9sM7nDNFqw8O71FymNyM27AG4A&tbm=nws&cx=792b3c9d19def1928`
     );
     get(
-      `https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyCTWna4c9sM7nDNFqw8O71FymNyM27AG4A&tbm=nws&cx=b2429b4ec66f52cb6`
+      `https://www.googleapis.com/customsearch/v1?q=${this.props.query}&key=AIzaSyCTWna4c9sM7nDNFqw8O71FymNyM27AG4A&tbm=nws&cx=792b3c9d19def1928`
     ).then((res) =>
       this.setState({
         data: res.items[0].snippet,
@@ -34,10 +34,10 @@ class Libs extends React.Component {
     return (
       <div className="d-flex flex-row text-wrap">
         <p className="text-wrap">
-          Liberal article title: {title}
+          Center article title: {title}
           <br></br>
           <br></br>
-          Liberal article snippet: {data}
+          Center article snippet: {data}
           <br></br>
           <br></br>
           URL: {url}
@@ -47,8 +47,8 @@ class Libs extends React.Component {
   }
 }
 
-Libs.propTypes = {
+Central.propTypes = {
   url: PropTypes.string,
 };
 
-export default Libs;
+export default Central;

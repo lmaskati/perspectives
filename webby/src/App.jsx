@@ -3,12 +3,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 import SearchArea from './features/search/SearchArea';
 import Reps from './features/search/Reps';
 import Libs from './features/search/Libs';
+import Central from './features/search/Central';
 
 class App extends React.Component {
-  state = { message: "coronavirus" }
+  state = { message: 'coronavirus' };
   callbackFunction = (childData) => {
-    this.setState({message: childData})
-}
+    this.setState({ message: childData });
+  };
 
   render() {
     return (
@@ -21,11 +22,13 @@ class App extends React.Component {
         </Row>
         <Row>
           <Col>
-            <Libs  query = {this.state.message}/>{' '}
+            <Libs query={this.state.message} />{' '}
           </Col>
-          <Col>Searching for: {this.state.message}</Col>
           <Col>
-            <Reps query = {this.state.message} />
+            <Central query={this.state.message} />
+          </Col>
+          <Col>
+            <Reps query={this.state.message} />
           </Col>
         </Row>
       </Container>
