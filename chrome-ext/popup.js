@@ -64,6 +64,8 @@ fetch(leftQuery)
         console.log(data);
 
 	// if center or right...do smth 
+	document.getElementById("img1").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
+	document.getElementById("head1").innerHTML = data.items[0].title;
 
       });
     }
