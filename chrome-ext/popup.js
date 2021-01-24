@@ -45,11 +45,15 @@ document.addEventListener('DOMContentLoaded', function() {
 var temp = document.getElementById("source");
 
 temp.innerHTML = "<b>News source: </b> " + capSource;
-temp.setAttribute("href", "https://www.w3schools.com");
-temp.setAttribute("target", "_blank");
+
+
+//temp.setAttribute("href", "https://www.w3schools.com");
+//temp.setAttribute("target", "_blank");
+
+
 document.getElementById("res").innerHTML = "<b>Political leaning:</b> " + lean;
 
-//var key = "AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE";
+var key = "AIzaSyBbvk21k9hF6HNwIONXX-zwVw4-xNafNJE";
 
 var centerQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + center;
 var leftQuery = "https://www.googleapis.com/customsearch/v1?q=" + title + "&key=" + key + "&tbm=nws&cx=" + left;
@@ -76,7 +80,11 @@ fetch(leftQuery)
 
 	if ((lean == "Center") || (lean == "Right")) { 
 	document.getElementById("img1").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
-	document.getElementById("head1").innerHTML = data.items[0].title;
+	var title = document.getElementById("head1");
+	title.innerHTML = data.items[0].title;
+
+	title.setAttribute("href", data.items[0].link);
+        title.setAttribute("target", "_blank");
 	document.getElementById("top1").innerHTML = "Left";
 }
       });
@@ -103,13 +111,21 @@ fetch(centerQuery)
 
 	if (lean == "Left") { 
 	document.getElementById("img1").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
-	document.getElementById("head1").innerHTML = data.items[0].title;
+	var title = document.getElementById("head1").
+
+	title.innerHTML = data.items[0].title;
+	title.setAttribute("href", data.items[0].link);
+        title.setAttribute("target", "_blank");
 	document.getElementById("top1").innerHTML = "Center";
 }
 
 	else if (lean == "Right") {
 	document.getElementById("img2").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
-	document.getElementById("head2").innerHTML = data.items[0].title;
+	var title = document.getElementById("head2");
+	title.innerHTML = data.items[0].title;
+	title.setAttribute("href", data.items[0].link);
+	title.setAttribute("target", "_blank");
+
 	document.getElementById("top2").innerHTML = "Center";
 }
 
@@ -139,7 +155,10 @@ fetch(rightQuery)
 
 	if ((lean == "Center") || (lean == "Left")) { 
 	document.getElementById("img2").style.backgroundImage = "url(" + data.items[0].pagemap.cse_image[0].src + ")";
-	document.getElementById("head2").innerHTML = data.items[0].title;
+	var title = document.getElementById("head2");
+        title.innerHTML = data.items[0].title;
+        title.setAttribute("href", data.items[0].link);
+        title.setAttribute("target", "_blank");
 	document.getElementById("top2").innerHTML = "Right";
 }
       });
