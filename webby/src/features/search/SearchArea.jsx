@@ -6,7 +6,7 @@ const SearchArea = () => {
   return (
     <div>
       {text}
-      <SearchBar onSubmit={(query) => alert(`Your query was ${query}!`)} />
+      <SearchBar onSubmit={(query) => {alert(`Your query was ${query}!`)}} />
     </div>
   );
 };
