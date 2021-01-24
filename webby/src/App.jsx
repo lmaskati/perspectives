@@ -1,23 +1,36 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import SearchArea from './features/search/SearchArea';
-import Reps from './features/search/Reps'
-import Libs from './features/search/Libs'
+import Reps from './features/search/Reps';
+import Libs from './features/search/Libs';
 
-const App = () => (
-  <Container className="w-100 h-100 p-5">
-    <Row>
-      <Col>
-        <h1>Project Neutral</h1>
-        <SearchArea />
-      </Col>
-    </Row>
-    <Row>
-      <Col><Libs /> </Col>
-      <Col>This is column 2. Put stuff here.</Col>
-      <Col><Reps url = 'https://blog.logrocket.com/axios-or-fetch-api/'/></Col>
-      </Row>
-  </Container>
-);
+class App extends React.Component {
+  state = { message: "" }
+  callbackFunction = (childData) => {
+    this.setState({message: childData})
+}
+
+  render() {
+    return (
+      <Container className="w-100 h-100 p-5">
+        <Row>
+          <Col>
+            <h1>Project Neutral</h1>
+            <SearchArea parentCallback={this.callbackFunction} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Libs  query = {this.state.message}/>{' '}
+          </Col>
+          <Col>Searching for: {this.state.message}</Col>
+          <Col>
+            <Reps query = {this.state.message} />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+}
 
 export default App;
