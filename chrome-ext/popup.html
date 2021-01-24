@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Project Neutral</title>
+    <script src="popup.js"></script>
+<style>
+
+body {min-height:300px;min-width:300px}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+//  background-color: #2196F3;
+//  padding: 10px;
+grid-gap: 10px;
+}
+
+#head1{
+max-width: 150px;
+}
+
+#head2{
+max-width: 150px;
+}
+
+.grid {
+height: 100px;
+background-size: cover;
+}
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+</style>
+
+  </head>
+  <body>
+    <h1>Project Neutral</h1>
+<div>
+<a id="source"></a>	
+<p id="res"></p>
+
+
+<p id="why"></p>
+</div>
+
+
+<div class="grid-container">
+<span id="top1"></span>
+<span id="top2"></span>
+</div>
+
+<div class="grid-container">
+  <div class="grid" id="img1">
+</div>
+  <div class="grid" id="img2">
+</div>
+
+</div>
+
+<div class="grid-container">
+<a id="head1"></a>
+<a id="head2"></a>
+</div>
+  </body>
+</html>
